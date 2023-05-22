@@ -2,6 +2,8 @@
 
 Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
 - 12:00:00PM on a 12-hour clock is 12:00:00 on a 24-hour clock. */
+
+
 /* ------------Intial algorithm----------- */
 /* function timeConversion(s) {
     const regex = /AM/;
@@ -17,7 +19,11 @@ Note: - 12:00:00AM on a 12-hour clock is 00:00:00 on a 24-hour clock.
         }else{
             let newHour = "";
             if (i == 0){
-                newHour = ((s[i] + s[i+1])*1 + 12);
+                if(s[i]+s[i+1] == "12"){
+                    newHour = "12";
+                }else{
+                    newHour = ((s[i] + s[i+1])*1 + 12);
+                }
                 militaryFormat = newHour;
                 i=2;
             }
@@ -58,7 +64,7 @@ function timeConversion(s) {
     return militaryFormat.join("");
 };
 
-console.log(timeConversion("02:34:50PM"));
+console.log(timeConversion("07:05:45PM"));
 console.log(timeConversion("04:59:59PM"));
 console.log(timeConversion("11:59:59PM"));
 console.log(timeConversion("12:00:00AM"));
